@@ -4,8 +4,5 @@ node_modules
 .nitro
 .cache
 .output
-.env
-.env.development
-.env.production
 dist
 .DS_Store

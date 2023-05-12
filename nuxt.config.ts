@@ -6,6 +6,10 @@ export default defineNuxtConfig({
         // CSS file in the project
         '@/assets/styles/app.scss',
     ],
+    routeRules: {
+        '/': { ssr: true },
+        '/CharacterDetail': { ssr: true },
+    },
     runtimeConfig: {
         // The private keys which are only available server-side
         apiSecret: process.env.NUXT_ENV_MARVEL_PRIVATE_KEY,
