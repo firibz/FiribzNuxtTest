@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { getCharacters, getCharacterById } from '~/services/marvel'
+import apiService from '~/services/marvel'
 import { Character } from '~/types/marvel'
 
 export const useCharacterStore = defineStore('character', {
@@ -10,12 +10,12 @@ export const useCharacterStore = defineStore('character', {
     }),
     actions: {
         async fetchCharacters(params: object) {
-            const data = await getCharacters(params)
+            const data = await apiService().getCharacters(params)
             this.total = data.total
             this.characters = data.results
         },
         async fetchCharacterById(id: number) {
-            this.character = await getCharacterById(id)
+            this.character = await apiService().getCharacterById(id)
         },
     },
 })

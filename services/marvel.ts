@@ -1,12 +1,19 @@
-import { marvelAPI } from '~/services/api'
+import  marvelAPI  from '~/plugins/axios'
 import { Character } from '~/types/marvel'
+import { useNuxtApp } from '#app'
 
-export const getCharacters = async (params: object) => {
-    const { data } = await marvelAPI.get('/characters', { params })
-    return data.data
-}
+export default function apiService() {
+    const nuxtApp = useNuxtApp()
+    const axios = nuxtApp.$axios // get the axios instance from the app
 
-export const getCharacterById = async (id: number) => {
-    const { data } = await marvelAPI.get(`/characters/${id}`)
-    return data.data.results[0] as Character
+    return {
+        async getCharacterById(id: number)  {
+            const { data } = await axios.get(`/characters/${id}`)
+            return data.data.results[0] as Character
+        },
+        async getCharacters(params: object)  {
+            const { data } = await axios.get('/characters', { params })
+            return data.data
+        }
+    }
 }
