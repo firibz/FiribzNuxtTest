@@ -4,13 +4,9 @@
         <input placeholder="search the character name" v-model="filterItems.nameStartsWith"
                @keyup.enter="filterCharacters"/>
         <button :disabled="loading" @click="filterCharacters">Search</button>
-        <ul>
-            <li v-for="character in state.characters" :key="character.id">
-                <nuxt-link :to="{ name: 'CharacterDetail', query: { id: character.id } }">
-                    {{ character.name }}
-                </nuxt-link>
-            </li>
-        </ul>
+        <div class="row">
+            <CharacterCard v-for="character in state.characters" :key="character.id" :character="character"/>
+        </div>
         <SystemPagination :loading="loading" :pagination="pagination" :total="state.total" @change-page="changePage"/>
     </div>
 </template>
@@ -19,11 +15,13 @@
 import { defineComponent, ref } from 'vue'
 import { useCharacterStore } from '~/stores/character'
 import SystemPagination from '~/components/SystemPagination.vue'
+import CharacterCard from '~/components/CharacterCard.vue' // Import the component here
 import { Pagination } from '~/types/pagination'
 
 export default defineComponent({
     components: {
-        SystemPagination
+        SystemPagination,
+        CharacterCard
     },
     setup() {
         const characterStore = useCharacterStore()
@@ -95,10 +93,38 @@ export default defineComponent({
     }
 })
 </script>
-
-<style scoped>
+<style>
 .container {
     max-width: 800px;
     margin: 0 auto;
+    padding: 2px 16px;
+}
+.column {
+    float: left;
+    width: 25%;
+}
+
+.row {
+    margin: 0 -5px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 868px) {
+    .column {
+        width: 50%;
+        margin-bottom: 20px;
+    }
+}
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
 }
 </style>

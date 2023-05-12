@@ -1,7 +1,7 @@
 <template>
     <div class="container" v-if="state.character">
         <h1>{{ state.character.name }}</h1>
-        <img v-if="state.character.thumbnail" :src="state.character.thumbnail.path + '.' + state.character.thumbnail.extension" alt="Character image" />
+        <img v-if="!loading && state.character.thumbnail" :src="state.character.thumbnail.path + '.' + state.character.thumbnail.extension" alt="Character image" />
         <p>{{ state.character.description }}</p>
         <h2>Series</h2>
         <ul>
@@ -19,23 +19,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import {defineComponent, ref} from 'vue'
 import { useCharacterStore } from '~/stores/character'
 export default defineComponent({
     name: 'CharacterDetail',
     setup() {
         const Route = useRoute();
+        const loading = ref(false)
 
         const characterStore = useCharacterStore()
-console.log('Route')
-console.log(Route.query.id)
         useFetch(async () => {
+            loading.value = true;
             await characterStore.fetchCharacterById(Number(Route.query.id))
+            loading.value = false;
         })
 
 
         return {
-            state:characterStore.$state
+            state:characterStore.$state,
+            loading
         }
     }
 })
