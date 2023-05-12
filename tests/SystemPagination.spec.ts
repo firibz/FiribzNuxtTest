@@ -1,5 +1,5 @@
 // import the component and vitest
-import { describe, it, expect, test } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 import Pagination from '../components/SystemPagination.vue'
 
