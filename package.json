@@ -6,12 +6,19 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest",
+    "start": "nuxt start"
   },
   "devDependencies": {
+    "@nuxt/test-utils": "^3.4.3",
     "@types/node": "^18",
+    "@vitejs/plugin-vue": "^4.2.2",
+    "@vue/test-utils": "^2.3.2",
+    "jsdom": "^22.0.0",
     "nuxt": "^3.4.3",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "vitest": "^0.31.0"
   },
   "dependencies": {
     "@nuxt/types": "^2.16.3",

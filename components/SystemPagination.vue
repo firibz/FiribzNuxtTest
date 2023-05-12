@@ -1,15 +1,19 @@
 <template>
     <div class="pagination">
-        <button @click="changePage(1)" :disabled="loading || (pagination.offset === 0)">First</button>
-        <button @click="changePage(pagination.page -1)" :disabled="loading || (pagination.offset === 0)">Prev
+        <button @click="changePage(1)" :disabled="loading || (pagination.offset === 0)"
+                data-test="first-button">First</button>
+        <button @click="changePage(pagination.page -1)" :disabled="loading || (pagination.offset === 0)"
+                data-test="prev-button">Prev
         </button>
         <input placeholder="page" v-model="pagination.page" @keyup.enter="changePage(pagination.page)"
                :disabled="loading"/>
         <button @click="changePage(pagination.page +1)"
-                :disabled="loading || (pagination.offset + pagination.limit >= total)">Next
+                :disabled="loading || (pagination.offset + pagination.limit >= total)"
+                data-test="next-button">Next
         </button>
         <button @click="changePage(maxPage)"
-                :disabled="loading || (pagination.offset + pagination.limit >= total)">Last
+                :disabled="loading || (pagination.offset + pagination.limit >= total)"
+                data-test="last-button">Last
         </button>
     </div>
 </template>
