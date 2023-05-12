@@ -1,7 +1,7 @@
 <template>
     <div class="container" v-if="state.character">
         <h1>{{ state.character.name }}</h1>
-        <img v-if="!loading && state.character.thumbnail" :src="state.character.thumbnail.path + '.' + state.character.thumbnail.extension" alt="Character image" />
+        <img class="detail-image" v-if="!loading && state.character.thumbnail" :src="state.character.thumbnail.path + '.' + state.character.thumbnail.extension" alt="Character image" />
         <p>{{ state.character.description }}</p>
         <h2>Series</h2>
         <ul>
@@ -42,13 +42,3 @@ export default defineComponent({
     }
 })
 </script>
-
-<style scoped>
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-img {
-    width: 300px;
-}
-</style>

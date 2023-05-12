@@ -7,7 +7,7 @@
         <div class="row">
             <CharacterCard v-for="character in state.characters" :key="character.id" :character="character"/>
         </div>
-        <SystemPagination :loading="loading" :pagination="pagination" :total="state.total" @change-page="changePage"/>
+        <SystemPagination class="my-md" :loading="loading" :pagination="pagination" :total="state.total" @change-page="changePage"/>
     </div>
 </template>
 
@@ -93,38 +93,3 @@ export default defineComponent({
     }
 })
 </script>
-<style>
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2px 16px;
-}
-.column {
-    float: left;
-    width: 25%;
-}
-
-.row {
-    margin: 0 -5px;
-}
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-@media screen and (max-width: 868px) {
-    .column {
-        width: 50%;
-        margin-bottom: 20px;
-    }
-}
-@media screen and (max-width: 600px) {
-    .column {
-        width: 100%;
-        display: block;
-        margin-bottom: 20px;
-    }
-}
-</style>

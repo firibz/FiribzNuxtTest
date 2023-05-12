@@ -58,10 +58,3 @@ export default defineComponent({
     }
 })
 </script>
-
-<style scoped>
-.pagination {
-    display: flex;
-    justify-content: center;
-}
-</style>

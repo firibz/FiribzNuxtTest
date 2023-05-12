@@ -28,25 +28,3 @@ export default defineComponent({
     }
 })
 </script>
-<style>
-.character-list-image {
-    height: 250px;
-    border-radius: 5px 5px 0 0;
-    width: 100%;
-}
-
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    height: 335px;
-    margin: 10px;
-    padding: 0 10px;
-    border-radius: 5px; /* 5px rounded corners */
-}
-
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-
-</style>

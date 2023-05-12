@@ -2,6 +2,10 @@ export default defineNuxtConfig({
     modules: [
         '@pinia/nuxt',
     ],
+    css: [
+        // CSS file in the project
+        '@/assets/styles/app.scss',
+    ],
     runtimeConfig: {
         // The private keys which are only available server-side
         apiSecret: process.env.NUXT_ENV_MARVEL_PRIVATE_KEY,
