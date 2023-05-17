@@ -1,8 +1,8 @@
 <template>
     <div class="card relative">
-        <img class="character-list-image" :src="image" :alt="name + ' image'"/>
-        <div class="container"><h4><b>{{ name }}</b></h4></div>
-        <nuxt-link v-if="id && to" class="absolute-center z-1 fit"
+        <img class="character-list-image" :src="image" :alt="title + ' image'"/>
+        <div class="container"><h4><b>{{ title }}</b></h4></div>
+        <nuxt-link v-if="to" class="absolute-center z-1 fit"
                    :to="{ name: to, query: { id } }"/>
     </div>
 </template>
@@ -18,7 +18,7 @@ export default defineComponent({
         to: {
             type: String,
         },
-        name: {
+        title: {
             type: String,
             required: true,
         },
