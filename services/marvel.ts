@@ -14,7 +14,7 @@ export default function apiService() {
             const { data } = await axios.get('/characters', { params })
             return data.data
         },
-        async getComicsById(id: number)  {
+        async getComicById(id: number)  {
             const { data } = await axios.get(`/comics/${id}`)
             return data.data.results[0] as Comic
         },
