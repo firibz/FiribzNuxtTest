@@ -1,4 +1,3 @@
-import  marvelAPI  from '~/plugins/axios'
 import { Character } from '~/types/marvel'
 import { useNuxtApp } from '#app'
 

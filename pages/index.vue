@@ -5,9 +5,15 @@
                @keyup.enter="filterCharacters"/>
         <button :disabled="loading" @click="filterCharacters">Search</button>
         <div class="row">
-            <CharacterCard v-for="character in state.characters" :key="character.id" :character="character"/>
+            <div class="column" v-for="character in state.characters" :key="character.id">
+                <ThumbnailCard :id="character.id"
+                               to="CharacterDetail"
+                               :name="character.name"
+                               :image="character.thumbnail.path + '.' + character.thumbnail.extension"/>
+            </div>
         </div>
-        <SystemPagination class="my-md" :loading="loading" :pagination="pagination" :total="state.total" @change-page="changePage"/>
+        <SystemPagination class="my-md" :loading="loading" :pagination="pagination" :total="state.total"
+                          @change-page="changePage"/>
     </div>
 </template>
 
@@ -15,13 +21,13 @@
 import { defineComponent, ref } from 'vue'
 import { useCharacterStore } from '~/stores/character'
 import SystemPagination from '~/components/SystemPagination.vue'
-import CharacterCard from '~/components/CharacterCard.vue' // Import the component here
+import ThumbnailCard from '~/components/ThumbnailCard.vue' // Import the component here
 import { Pagination } from '~/types/pagination'
 
 export default defineComponent({
     components: {
         SystemPagination,
-        CharacterCard
+        ThumbnailCard
     },
     setup() {
         const characterStore = useCharacterStore()
